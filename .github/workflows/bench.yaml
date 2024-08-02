@@ -14,6 +14,8 @@ jobs:
 
     - name: Check out code into the Go module directory
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 1024
 
     - name: Run Benchmark
       run: go run github.com/pyroscope-benchmarkers/cob@672dd7f
