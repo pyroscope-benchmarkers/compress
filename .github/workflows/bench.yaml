@@ -1,0 +1,21 @@
+name: Benchmark
+on: [push, pull_request]
+jobs:
+  test:
+    name: Bench
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Set up Go 1.22
+      uses: actions/setup-go@v5
+      with:
+        go-version: 1.22
+      id: go
+
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1024
+
+    - name: Run Benchmark
+      run: go run github.com/pyroscope-benchmarkers/cob@672dd7f
